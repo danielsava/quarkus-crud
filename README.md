@@ -1,3 +1,25 @@
+# Quarkus 3
+
+  - Quarkus 3 is based on Jakarta EE 10 (jakarta.*)
+
+  - obs: Quarkus 2 was based on Jakarta EE 8. (javax.*)
+
+
+# Json (Jackson)
+
+
+In Quarkus, the default Jackson ObjectMapper obtained via CDI (and consumed by the Quarkus extensions) 
+is configured to ignore unknown properties(by disabling the DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES feature).
+
+Furthermore, the ObjectMapper is configured to **format dates and time in ISO-8601** (by disabling the 
+SerializationFeature.WRITE_DATES_AS_TIMESTAMPS feature).
+  - 2022-09-27 18:00:00.000 (YYYY-MM-DD)
+
+The default behaviour of Jackson can be restored by setting quarkus.jackson.write-dates-as-timestamps=true in your
+application.properties. If you want to change the format for a single field, you can use the @JsonFormat annotation
+
+
+
 # quarkus-crud
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.

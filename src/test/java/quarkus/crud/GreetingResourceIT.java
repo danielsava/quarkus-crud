@@ -1,4 +1,4 @@
-package sava.teste;
+package quarkus.crud;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
