@@ -20,6 +20,9 @@
         <quarkus.platform.version>3.3.0</quarkus.platform.version>
         <surefire-plugin.version>3.1.2</surefire-plugin.version>
         <skipITs>true</skipITs>
+
+        <jkube.version>1.13.1</jkube.version>
+
     </properties>
 
 
@@ -73,6 +76,13 @@
     <build>
 
         <plugins>
+
+            <!-- JKube -->
+            <plugin>
+                <groupId>org.eclipse.jkube</groupId>
+                <artifactId>kubernetes-maven-plugin</artifactId>
+                <version>${jkube.version}</version>
+            </plugin>
 
             <plugin>
                 <groupId>${quarkus.platform.group-id}</groupId>

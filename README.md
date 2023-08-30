@@ -4,6 +4,21 @@
 
   - obs: Quarkus 2 was based on Jakarta EE 8. (javax.*)
 
+# Maven Skip Tests
+
+ - clean install -DskipTests
+
+
+# JKube
+ 
+  - https://eclipse.dev/jkube/ 
+  - https://www.baeldung.com/ops/eclipse-jkube
+  - https://medium.com/swlh/deploy-quarkus-todo-list-app-to-kubernetes-using-eclipse-jkube-c774ef6b68f0
+
+  - https://rohaan.medium.com/deploying-java-applications-onto-kubernetes-using-eclipse-jkube-c2ad83a7d98a
+  - https://medium.com/swlh/deploy-quarkus-todo-list-app-to-kubernetes-using-eclipse-jkube-c774ef6b68f0 
+
+
 
 # Json (Jackson)
 
