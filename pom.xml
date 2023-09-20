@@ -77,12 +77,13 @@
 
         <plugins>
 
-            <!-- JKube -->
+            <!-- JKube
             <plugin>
                 <groupId>org.eclipse.jkube</groupId>
                 <artifactId>kubernetes-maven-plugin</artifactId>
                 <version>${jkube.version}</version>
             </plugin>
+            -->
 
             <plugin>
                 <groupId>${quarkus.platform.group-id}</groupId>
