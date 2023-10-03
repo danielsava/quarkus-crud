@@ -1,4 +1,4 @@
-package quarkus.crud.rest;
+package quarkus.crud.base.security;
 
 
 import jakarta.inject.Inject;

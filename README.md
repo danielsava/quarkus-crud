@@ -9,6 +9,16 @@
  - clean install -DskipTests
 
 
+# Banco de Dados: Docker
+
+    - docker run --rm=true --name postgres-quarkus-hibernate -e POSTGRES_USER=hibernate \
+           -e POSTGRES_PASSWORD=hibernate -e POSTGRES_DB=hibernate_db \
+           -p 5432:5432 postgres:14.1
+
+    
+
+
+
 # JKube
  
   - https://eclipse.dev/jkube/ 
