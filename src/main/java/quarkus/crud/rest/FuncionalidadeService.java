@@ -72,7 +72,7 @@ public class FuncionalidadeService {
     @Transactional
     public Funcionalidade update(Long id, Funcionalidade toSave) {
 
-        if( Funcionalidade.existe(id) )
+        if(!Funcionalidade.existe(id) )
             throw new WebApplicationException("Entidade com id " + id + " não existe.", 404);
 
         return Funcionalidade.getEntityManager().merge(toSave);
