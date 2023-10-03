@@ -13,6 +13,14 @@ public class FuncionalidadeDAO implements PanacheRepository<Funcionalidade> {
 
 
 
+
+
+
+    public boolean existe(Long id) {
+
+        return count("id", id) > 0;
+    }
+
     public Funcionalidade findByName(String name) {
 
         return find("name", name).firstResult();

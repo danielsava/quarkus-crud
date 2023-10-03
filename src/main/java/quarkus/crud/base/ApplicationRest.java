@@ -1,4 +1,4 @@
-package quarkus.crud.rest;
+package quarkus.crud.base;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
