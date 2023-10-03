@@ -1,9 +1,7 @@
 package quarkus.crud.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import quarkus.crud.base.entity.EntityBase;
 
 import java.util.UUID;
 
@@ -17,13 +15,9 @@ import java.util.UUID;
 
 
 
-
 @Entity
-public class Funcionalidade {
+public class Funcionalidade extends EntityBase {
 
-    @Id
-    @GeneratedValue
-    public Long id;
 
     @Column
     public String nome;
@@ -40,5 +34,10 @@ public class Funcionalidade {
         this.uuid = UUID.randomUUID().toString();
     }
 
+
+    public static boolean existe(Long id) {
+
+        return count("id", id) > 0;
+    }
 
 }

@@ -7,7 +7,6 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.reactive.common.util.RestMediaType;
 import quarkus.crud.entity.Funcionalidade;
-import quarkus.crud.repository.FuncionalidadeDAO;
 
 import java.util.List;
 
@@ -29,22 +28,14 @@ import java.util.List;
 
 
 @Path("/funcionalidade")
-public class FuncionalidadeRest {
+public class FuncionalidadeService {
 
-
-    private final FuncionalidadeDAO dao;
-
-
-    FuncionalidadeRest(FuncionalidadeDAO dao) {
-
-        this.dao = dao;
-    }
 
     @GET
     @Produces({MediaType.APPLICATION_JSON, RestMediaType.APPLICATION_HAL_JSON})
     public List<Funcionalidade> listAll() {
 
-        return dao.listAll(Sort.by("id", Sort.Direction.Descending, Sort.NullPrecedence.NULLS_LAST));
+        return Funcionalidade.listAll(Sort.by("id", Sort.Direction.Descending, Sort.NullPrecedence.NULLS_LAST));
     }
 
 
@@ -52,7 +43,7 @@ public class FuncionalidadeRest {
     @Path("/count")
     public Long count() {
 
-        return dao.count();
+        return Funcionalidade.count();
     }
 
 
@@ -60,8 +51,7 @@ public class FuncionalidadeRest {
     @Path("{id}")
     public Funcionalidade findById( @PathParam("id") Long id ) {
 
-        return dao.findByIdOptional(id)
-                .orElseThrow(() -> new WebApplicationException("Funcionalidade com id " + id + " não encontrado", Response.Status.NOT_FOUND));
+        return Funcionalidade.findById(id);
     }
 
     @POST
@@ -71,7 +61,7 @@ public class FuncionalidadeRest {
         if(f.id != null)
             throw new WebApplicationException("Somente entidades com id nulo podem ser adicionadas", 500);
 
-        dao.persist(f);
+        f.persist();
 
         return f;
     }
@@ -82,11 +72,10 @@ public class FuncionalidadeRest {
     @Transactional
     public Funcionalidade update(Long id, Funcionalidade toSave) {
 
-
-        if(!dao.existe(id))
+        if( Funcionalidade.existe(id) )
             throw new WebApplicationException("Entidade com id " + id + " não existe.", 404);
 
-        return dao.getEntityManager().merge(toSave);
+        return Funcionalidade.getEntityManager().merge(toSave);
     }
 
 
@@ -95,13 +84,12 @@ public class FuncionalidadeRest {
     @Transactional
     public Response delete(Long id) {
 
-        if(!dao.existe(id))
+        if(!Funcionalidade.existe(id))
             throw new WebApplicationException("Entidade com id " + id + " não existe.", 404);
 
-        dao.deleteById(id);
+        Funcionalidade.deleteById(id);
 
         return Response.ok().status(204).build();
     }
-
 
 }
