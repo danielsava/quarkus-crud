@@ -55,6 +55,10 @@ public class FuncionalidadeDAO {
     }
 
 
+    public List<Funcionalidade> findLastest() {
+
+        return Funcionalidade.list("order by id DESC");
+    }
 
 
 

@@ -35,6 +35,9 @@ public class Funcionalidade extends EntityBase {
     }
 
 
+    // Join
+    // SELECT g FROM ChessHame g LEFT JOIN FETCH g.playerWhite LEFT JOIN FETCH g.playerBlack WHERE g.playerBlack.nome = <nome>
+
     public static boolean existe(Long id) {
 
         return count("id", id) > 0;

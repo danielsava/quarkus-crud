@@ -35,7 +35,7 @@ public class FuncionalidadeService {
     @Produces({MediaType.APPLICATION_JSON, RestMediaType.APPLICATION_HAL_JSON})
     public List<Funcionalidade> listAll() {
 
-        return Funcionalidade.listAll(Sort.by("id", Sort.Direction.Descending, Sort.NullPrecedence.NULLS_LAST));
+        return Funcionalidade.listAll(Sort.by("id", Sort.Direction.Ascending, Sort.NullPrecedence.NULLS_LAST));
     }
 
 
