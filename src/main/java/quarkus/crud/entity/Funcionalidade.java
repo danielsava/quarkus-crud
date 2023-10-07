@@ -16,16 +16,17 @@ import java.util.UUID;
 
 
 @Entity
+@Table(name = "funcionalidade")
 public class Funcionalidade extends EntityBase {
 
 
-    @Column
+    @Column(name = "nome")
     public String nome;
 
-    @Column
+    @Column(name = "descricao")
     public String descricao;
 
-    @Column
+    @Column(name = "uuid")
     public String uuid;
 
 

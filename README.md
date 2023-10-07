@@ -6,7 +6,7 @@
 
 # Maven Skip Tests
 
- - clean install -DskipTests
+ - clean install -DskipTests -Dquarkus.analytics.disabled=true
 
 
 # Banco de Dados: Docker
@@ -15,7 +15,7 @@
            -e POSTGRES_PASSWORD=hibernate -e POSTGRES_DB=hibernate_db \
            -p 5432:5432 postgres:14.1
 
-    
+    - docker run -d --name mariadb -e MARIADB_ROOT_PASSWORD=123456 -p 3306:3306 mariadb     
 
 
 
