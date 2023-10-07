@@ -3,9 +3,7 @@ package quarkus.crud.rest;
 import io.quarkus.panache.common.Sort;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.jboss.resteasy.reactive.common.util.RestMediaType;
 import quarkus.crud.entity.Funcionalidade;
 import quarkus.crud.repository.FuncionalidadeDAO;
 
