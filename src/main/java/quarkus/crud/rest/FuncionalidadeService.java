@@ -21,9 +21,6 @@ import java.util.List;
  *           * File: application/octet-stream
  *
  *
- *      HAL+JSON
- *          * https://quarkus.io/guides/resteasy-reactive#web-links-support
- *
  *
  */
 
@@ -41,7 +38,7 @@ public class FuncionalidadeService {
 
 
     @GET
-    @Produces({MediaType.APPLICATION_JSON, RestMediaType.APPLICATION_HAL_JSON})
+    //@Produces({MediaType.APPLICATION_JSON, RestMediaType.APPLICATION_HAL_JSON})
     public List<Funcionalidade> listAll() {
 
         return dao.listAll(Sort.by("id", Sort.Direction.Ascending, Sort.NullPrecedence.NULLS_LAST));

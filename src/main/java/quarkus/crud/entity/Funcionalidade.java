@@ -23,13 +23,13 @@ public class Funcionalidade extends EntityBase {
 
 
     @Column(name = "nome")
-    public String nome;
+    private String nome;
 
     @Column(name = "descricao")
-    public String descricao;
+    private String descricao;
 
     @Column(name = "uuid")
-    public String uuid;
+    private String uuid;
 
 
     public Funcionalidade() {
@@ -37,5 +37,28 @@ public class Funcionalidade extends EntityBase {
         this.uuid = UUID.randomUUID().toString();
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
 }
