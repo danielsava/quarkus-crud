@@ -1,28 +1,27 @@
-package quarkus.crud.base.entity;
+package quarkus.crud.base;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @MappedSuperclass
-public abstract class EntityBase extends PanacheEntityBase {
+public abstract class EntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public Long id;
+    private Long id;
 
     @Version
     @Column(name = "version")
-    public Long version;
+    private Long version;
 
     @Column(name = "created_at")
-    public LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
-    public LocalDateTime updatedAt;
+    private LocalDateTime updatedAt;
 
 
     @PrePersist
@@ -53,4 +52,22 @@ public abstract class EntityBase extends PanacheEntityBase {
     public int hashCode() {
         return Objects.hash(id, version);
     }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
 }

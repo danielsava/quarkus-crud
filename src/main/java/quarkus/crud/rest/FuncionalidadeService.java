@@ -7,6 +7,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.reactive.common.util.RestMediaType;
 import quarkus.crud.entity.Funcionalidade;
+import quarkus.crud.repository.FuncionalidadeDAO;
 
 import java.util.List;
 
@@ -30,12 +31,20 @@ import java.util.List;
 @Path("/funcionalidade")
 public class FuncionalidadeService {
 
+    FuncionalidadeDAO dao;
+
+
+    public FuncionalidadeService(FuncionalidadeDAO dao) {
+
+        this.dao = dao;
+    }
+
 
     @GET
     @Produces({MediaType.APPLICATION_JSON, RestMediaType.APPLICATION_HAL_JSON})
     public List<Funcionalidade> listAll() {
 
-        return Funcionalidade.listAll(Sort.by("id", Sort.Direction.Ascending, Sort.NullPrecedence.NULLS_LAST));
+        return dao.listAll(Sort.by("id", Sort.Direction.Ascending, Sort.NullPrecedence.NULLS_LAST));
     }
 
 
@@ -43,7 +52,7 @@ public class FuncionalidadeService {
     @Path("/count")
     public Long count() {
 
-        return Funcionalidade.count();
+        return dao.count();
     }
 
 
@@ -51,17 +60,17 @@ public class FuncionalidadeService {
     @Path("{id}")
     public Funcionalidade findById( @PathParam("id") Long id ) {
 
-        return Funcionalidade.findById(id);
+        return dao.findById(id);
     }
 
     @POST
     @Transactional
     public Funcionalidade add(Funcionalidade f) {
 
-        if(f.id != null)
+        if(f.getId() != null)
             throw new WebApplicationException("Somente entidades com id nulo podem ser adicionadas", 500);
 
-        f.persist();
+        dao.persist(f);
 
         return f;
     }
@@ -72,10 +81,10 @@ public class FuncionalidadeService {
     @Transactional
     public Funcionalidade update(Long id, Funcionalidade toSave) {
 
-        if(!Funcionalidade.existe(id) )
+        if(!dao.existe(id) )
             throw new WebApplicationException("Entidade com id " + id + " não existe.", 404);
 
-        return Funcionalidade.getEntityManager().merge(toSave);
+        return dao.getEntityManager().merge(toSave);
     }
 
 
@@ -84,10 +93,10 @@ public class FuncionalidadeService {
     @Transactional
     public Response delete(Long id) {
 
-        if(!Funcionalidade.existe(id))
+        if(!dao.existe(id))
             throw new WebApplicationException("Entidade com id " + id + " não existe.", 404);
 
-        Funcionalidade.deleteById(id);
+        dao.deleteById(id);
 
         return Response.ok().status(204).build();
     }

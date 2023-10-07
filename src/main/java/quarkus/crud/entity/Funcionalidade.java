@@ -1,7 +1,9 @@
 package quarkus.crud.entity;
 
-import jakarta.persistence.*;
-import quarkus.crud.base.entity.EntityBase;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import quarkus.crud.base.EntityBase;
 
 import java.util.UUID;
 
@@ -35,13 +37,5 @@ public class Funcionalidade extends EntityBase {
         this.uuid = UUID.randomUUID().toString();
     }
 
-
-    // Join
-    // SELECT g FROM ChessHame g LEFT JOIN FETCH g.playerWhite LEFT JOIN FETCH g.playerBlack WHERE g.playerBlack.nome = <nome>
-
-    public static boolean existe(Long id) {
-
-        return count("id", id) > 0;
-    }
 
 }
