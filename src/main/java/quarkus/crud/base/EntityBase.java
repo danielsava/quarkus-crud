@@ -1,5 +1,6 @@
 package quarkus.crud.base;
 
+import io.quarkus.logging.Log;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -11,17 +12,17 @@ public abstract class EntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    public Long id;
 
     @Version
     @Column(name = "version")
-    private Long version;
+    public Long version;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    public LocalDateTime createdAt;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    public LocalDateTime updatedAt;
 
 
     @PrePersist
@@ -55,19 +56,11 @@ public abstract class EntityBase {
 
 
     public Long getId() {
+
+        Log.info("[EntityBase] Passou no GET do ID ...");
+
         return id;
     }
 
-    public Long getVersion() {
-        return version;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
 
 }
