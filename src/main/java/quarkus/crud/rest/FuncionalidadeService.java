@@ -19,6 +19,12 @@ import java.util.List;
  *           * File: application/octet-stream
  *
  *
+ *      Multipart support
+ *        -  This configure a limit to the size of each part. Any request with a part size exceeding this configuration value will result in HTTP status code 413.
+ *        * quarkus.http.limits.max-form-attribute-size
+ *
+ *
+ *
  *
  */
 
