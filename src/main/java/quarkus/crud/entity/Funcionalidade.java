@@ -21,7 +21,6 @@ import java.util.UUID;
 @Table(name = "funcionalidade")
 public class Funcionalidade extends EntityBase {
 
-
     @Column(name = "nome")
     public String nome;
 
