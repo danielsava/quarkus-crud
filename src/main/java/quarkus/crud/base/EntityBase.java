@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 @MappedSuperclass
 public abstract class EntityBase {
@@ -12,6 +13,9 @@ public abstract class EntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long id;
+
+    @Column(name = "uuid")
+    public String uuid;
 
     @Version
     @Column(name = "version")
@@ -27,6 +31,7 @@ public abstract class EntityBase {
     @PrePersist
     void prePersist() {
 
+        this.uuid = UUID.randomUUID().toString();
         this.createdAt = LocalDateTime.now();
     }
 

@@ -1,25 +1,15 @@
 package quarkus.crud.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import quarkus.crud.base.EntityBase;
-
-import java.util.UUID;
-
-/**
- *
- *    - JSON serialized/deserialized:
- *       * Construtor Padrão: A default constructor is required by the JSON serialization layer.
- *
- *
- */
-
-
 
 @Entity
 @Table(name = "funcionalidade")
 public class Funcionalidade extends EntityBase {
+
+    @ManyToOne
+    @JoinColumn(name = "sistema_id")
+    public Sistema sistema;
 
     @Column(name = "nome")
     public String nome;
@@ -27,14 +17,9 @@ public class Funcionalidade extends EntityBase {
     @Column(name = "descricao")
     public String descricao;
 
-    @Column(name = "uuid")
-    public String uuid;
-
-
-    public Funcionalidade() {
-
-        this.uuid = UUID.randomUUID().toString();
-    }
+    @ManyToOne
+    @JoinColumn(name = "acao_id")
+    public Acao acao;
 
 
     public String getNome() {
