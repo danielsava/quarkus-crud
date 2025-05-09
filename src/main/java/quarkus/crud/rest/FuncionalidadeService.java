@@ -68,7 +68,7 @@ public class FuncionalidadeService {
     @Transactional
     public Funcionalidade add(Funcionalidade f) {
 
-        if(f.getId() != null)
+        if(f.id != null)
             throw new WebApplicationException("Somente entidades com id nulo podem ser adicionadas", 500);
 
         dao.persist(f);
@@ -101,5 +101,6 @@ public class FuncionalidadeService {
 
         return Response.ok().status(204).build();
     }
+
 
 }

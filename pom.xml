@@ -82,7 +82,7 @@
             <artifactId>quarkus-arc</artifactId>
         </dependency>
 
-        <!-- Testes -->
+        <!-- Testes
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5</artifactId>
@@ -94,6 +94,7 @@
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
+        -->
 
     </dependencies>
 
@@ -167,14 +168,10 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
-
     </build>
 
-
     <profiles>
-
         <profile>
             <id>native</id>
             <activation>
@@ -187,7 +184,6 @@
                 <quarkus.package.type>native</quarkus.package.type>
             </properties>
         </profile>
-
     </profiles>
 
 </project>
