@@ -1,8 +1,16 @@
+
 # Quarkus 3
 
   - Quarkus 3 is based on Jakarta EE 10 (jakarta.*)
 
   - obs: Quarkus 2 was based on Jakarta EE 8. (javax.*)
+
+# Intellij
+
+### Project Structure
+
+ <img src="img.png" width="600">
+
 
 # Maven Skip Tests
 
